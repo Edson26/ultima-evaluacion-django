@@ -1,7 +1,7 @@
 from django.db import models
 # Create your models here.
 
-class Intituto(models.Model):
+class Instituto(models.Model):
     id = models.AutoField(primary_key=True,auto_created=True)
     nombre = models.CharField(max_length=30)
     
