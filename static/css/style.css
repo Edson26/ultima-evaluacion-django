@@ -1,0 +1,11 @@
+/* CSS SOLO PARA LAS CARDS */
+
+.card {
+    display: grid;
+    place-items: center;
+}
+
+.card img {
+    width: 200px;
+    height: 250px;
+}
