@@ -1,5 +1,5 @@
 from django import forms
-from .models import Inscritos, Instituto
+from .models import Inscritos, Institucion
 
 
 class FormInscritos(forms.ModelForm):
@@ -8,7 +8,7 @@ class FormInscritos(forms.ModelForm):
         fields = '__all__'
 
 
-class FormInstituto(forms.ModelForm):
+class FormInstitucion(forms.ModelForm):
     class Meta:
-        model = Instituto
+        model = Institucion
         fields = '__all__'

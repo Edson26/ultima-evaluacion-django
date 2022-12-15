@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'reservas',
+    'seminario',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'LocalGastronomico.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'reservas/plantillas')],
+        'DIRS': [os.path.join(BASE_DIR, 'seminario/plantillas')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -17,44 +18,54 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <title>Gestion de Inscripciones</title>
+    <title>Gestion de Instituciones</title>
   </head>
   <body class="container mt-5">
     <div class="alert alert-success display-1 text-center">
-      --- Inscripciones ---
+      --- Instituciones ---
     </div>
-    {% if inscritos %}
+    {% if instituciones %}
     <table class="table">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nombre</th>
-          <th>Telefono</th>
-          <th>Fecha y Hora</th>
-          <th>Instituto</th>
+          <th class="text-center">Nombre</th>
+          <th class="float-end">Opciones</th>
         </tr>
       </thead>
       <tbody>
-        {% for inscrito in inscritos %}
+        {% for institucion in instituciones %}
         <tr>
-          <td scope="row">{{inscrito.id}}</td>
-          <td>{{inscrito.nombre}}</td>
-          <td>{{inscrito.telefono}}</td>
-          <td>{{inscrito.fecha}} {{inscrito.hora}}</td>
-          <td>{{inscrito.institucion}}</td>
+          <td scope="row">{{institucion.id}}</td>
+          <td class="text-center">{{institucion.nombre}}</td>
+          <td class="float-end">
+            <a
+              class="btn btn-secondary"
+              href="{% url 'editarInstitucion' institucion.id %}"
+            >
+              Editar
+            </a>
+            <span>||</span>
+            <a
+              class="btn btn-danger"
+              href="{% url 'eliminarInstitucion' institucion.id %}"
+            >
+              Eliminar
+            </a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     {% else %}
-    <div class="alert alert-warning" role="alert">
-      <strong>No se encuentran personas inscritas en el sistema</strong>
+    <div class="alert alert-warning text-center" role="alert">
+      <strong>No se encuentran instituciones en el sistema</strong>
     </div>
     {% endif %}
 
-    <a href="{% url 'home' %}" class="btn btn-danger">Inicio</a>
-    <a href="{% url 'crearInscripcion' %}" class="btn btn-info float-end">
-      Crear Inscripcion
+    <a href="{% url 'home' %}" class="btn btn-danger">Menú principal</a>
+    <a href="{% url 'crearInstitucion' %}" class="btn btn-info float-end">
+      Crear Institución
     </a>
   </body>
 </html>

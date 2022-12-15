@@ -1,9 +1,6 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render
-from .forms import FormInscritos, FormInstituto
-from .models import Inscritos, Instituto
+from .forms import FormInscritos, FormInstitucion
+from .models import Inscritos, Institucion
 
 # Funcion para renderizar la pagina principal
 
@@ -27,15 +24,15 @@ def crearInscripcion(request):
 # Funcion para agregar Instituto
 
 
-def crearInstituto(request):
-    form = FormInstituto()
+def crearInstitucion(request):
+    form = FormInstitucion()
     if request.method == 'POST':
-        form = FormInstituto(request.POST)
+        form = FormInstitucion(request.POST)
         if (form.is_valid()):
             form.save()
-        return home(request)
+        return listadoInstitucion(request)
     data = {'form': form}
-    return render(request, 'crear_instituto.html', data)
+    return render(request, 'crear_institucion.html', data)
 
 # Funcion para listar los inscritos
 
@@ -48,10 +45,10 @@ def listadoInscrito(request):
 # Funcion para listar los institutos
 
 
-def listadoInstituto(request):
-    instituto = Instituto.objects.all()
-    data = {'instituto': instituto}
-    return render(request, 'listar_instituto.html', data)
+def listadoInstitucion(request):
+    institucion = Institucion.objects.all()
+    data = {'instituciones': institucion}
+    return render(request, 'listar_institucion.html', data)
 
 # Funcion para editar una inscripcion
 
@@ -60,8 +57,7 @@ def editarInscrito(request, id):
     if request.method == 'GET':
         inscrito = Inscritos.objects.get(id=id)
         form = FormInscritos(instance=inscrito)
-        data = {'form': form}
-        return render(request, 'editar_inscripcion.html', data)
+        return render(request, 'editar_inscripcion.html', {'inscrito': inscrito, 'form': form})
     else:
         try:
             inscrito = Inscritos.objects.get(id=id)
@@ -70,32 +66,32 @@ def editarInscrito(request, id):
                 form.save()
             return listadoInscrito(request)
         except ValueError:
-            return render(request, 'editar_inscripcion.html', {'form': form, 'error': 'no fue posible actualizar la inscripcion'})
+            return render(request, 'editar_inscripcion.html', {'form': form, 'error': 'no fue posible actualizar la inscripción'})
 
 # Funcion para editar un Instituto
 
 
-def editarInstituto(request, id):
+def editarInstitucion(request, id):
     if request.method == 'GET':
-        inscrito = Instituto.objects.get(id=id)
-        form = FormInstituto(instance=inscrito)
+        institucion = Institucion.objects.get(id=id)
+        form = FormInstitucion(instance=institucion)
         data = {'form': form}
-        return render(request, 'editar_instituto.html', data)
+        return render(request, 'editar_institucion.html', data)
     else:
         try:
-            inscrito = Instituto.objects.get(id=id)
-            form = FormInstituto(request.POST, instance=inscrito)
+            institucion = Institucion.objects.get(id=id)
+            form = FormInstitucion(request.POST, instance=institucion)
             if form.is_valid():
                 form.save()
-            return listadoInscrito(request)
+            return listadoInstitucion(request)
         except ValueError:
-            return render(request, 'editar_instituto.html', {'form': form, 'error': 'no fue posible actualizar la inscripcion'})
+            return render(request, 'editar_institucion.html', {'form': form, 'error': 'no fue posible actualizar la institución'})
 
 
 # Funcion para eliminar una inscripcion
 
 
-def eliminar(request, id):
+def eliminarInscripcion(request, id):
     inscrito = Inscritos.objects.get(id=id)
     inscrito.delete()
     return listadoInscrito(request)
@@ -103,7 +99,7 @@ def eliminar(request, id):
 # Funcion para eliminar un Instituto
 
 
-def eliminar(request, id):
-    inscrito = Instituto.objects.get(id=id)
-    inscrito.delete()
-    return listadoInstituto(request)
+def eliminarInstitucion(request, id):
+    institucion = Institucion.objects.get(id=id)
+    institucion.delete()
+    return listadoInstitucion(request)

@@ -15,17 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from reservas import views
+from seminario import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('crearInscripcion/', views.crearInscripcion, name="crearInscripcion"),
-    path('crearInstituto/', views.crearInstituto, name="crearInstituto"),
+    path('crearInstitucion/', views.crearInstitucion, name="crearInstitucion"),
     path('listaInscritos/', views.listadoInscrito, name="listaInscripcion"),
-    path('listaInstitutos/', views.listadoInstituto, name="listaInstituto"),
-    path('editarInscripcion/', views.editarInscrito, name="editarInscripcion"),
-    path('editarInstituto/', views.editarInstituto, name="editarInstituto"),
+    path('listaInstituciones/', views.listadoInstitucion, name="listaInstituciones"),
+    path('editarInscripcion/<int:id>', views.editarInscrito, name="editarInscripcion"),
+    path('editarInstitucion/<int:id>', views.editarInstitucion, name="editarInstitucion"),
+    path('eliminarInscripcion/<int:id>', views.eliminarInscripcion,name="eliminarInscripcion"),
+    path('eliminarInstitucion/<int:id>', views.eliminarInstitucion, name="eliminarInstitucion"),
     # Esto falta por crear
     # path('api1/', views.api1, name="api1")
     # path('api2/', views.api2, name="api2")
