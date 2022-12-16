@@ -30,7 +30,7 @@
         <tr>
           <th>ID</th>
           <th class="text-center">Nombre</th>
-          <th class="float-end">Opciones</th>
+          <th>Opciones</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +38,7 @@
         <tr>
           <td scope="row">{{institucion.id}}</td>
           <td class="text-center">{{institucion.nombre}}</td>
-          <td class="float-end">
+          <td>
             <a
               class="btn btn-secondary"
               href="{% url 'editarInstitucion' institucion.id %}"
@@ -63,7 +63,7 @@
     </div>
     {% endif %}
 
-    <a href="{% url 'home' %}" class="btn btn-danger">Menú principal</a>
+    <a href="{% url 'listado' %}" class="btn btn-danger">Volver</a>
     <a href="{% url 'crearInstitucion' %}" class="btn btn-info float-end">
       Crear Institución
     </a>

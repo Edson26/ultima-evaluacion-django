@@ -32,7 +32,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'seminario',
+    'Api_Rest',
+    'Class_Based_Views',
+    'Funcion_Based_Views',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

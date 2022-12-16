@@ -8,6 +8,11 @@ from .models import Inscritos, Institucion
 def home(request):
     return render(request, 'index.html')
 
+# Funcion de opcion para Inscripciones o Instituciones
+
+def listado(request):
+    return render(request, 'listado.html')
+
 # Funcion para agregar una inscripcion
 
 

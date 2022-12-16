@@ -32,8 +32,10 @@
           <th>Nombre</th>
           <th>Telefono</th>
           <th>Fecha y Hora</th>
-          <th>Instituto</th>
-          <th class="float-start">Opciones</th>
+          <th>Institución</th>
+          <th>Estado</th>
+          <th>Observación</th>
+          <th class="float-end">Opciones</th>
         </tr>
       </thead>
       <tbody>
@@ -44,7 +46,9 @@
           <td>{{inscrito.telefono}}</td>
           <td>{{inscrito.fecha}} {{inscrito.hora}}</td>
           <td>{{inscrito.institucion}}</td>
-          <td>
+          <td>{{inscrito.estado}}</td>
+          <td>{{inscrito.observacion}}</td>
+          <td class="float-end" >
             <a
               class="btn btn-secondary"
               href="{% url 'editarInscripcion' inscrito.id %}"
@@ -69,7 +73,7 @@
     </div>
     {% endif %}
 
-    <a href="{% url 'home' %}" class="btn btn-danger">Menú principal</a>
+    <a href="{% url 'listado' %}" class="btn btn-danger">Volver</a>
     <a href="{% url 'crearInscripcion' %}" class="btn btn-info float-end">
       Crear Inscripcion
     </a>

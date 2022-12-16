@@ -15,6 +15,23 @@ class Inscritos(models.Model):
     nombre = models.CharField(max_length=30)
     telefono = models.IntegerField()
     fecha = models.DateField(auto_now_add=True)
-    hora = models.DateTimeField(auto_now_add=True)
+    hora = models.TimeField(auto_now_add=True)
     institucion = models.ForeignKey(
         Institucion, blank=True, on_delete=models.CASCADE)
+    RESERVADO = 'Reservado'
+    COMPLETADA = 'Completada'
+    ANULADA = 'Anulada'
+    NO_ASISTE = 'No Asiste'
+
+    ESTADO_CHOICES = [
+        (RESERVADO, 'Reservado'),
+        (COMPLETADA, 'Completada'),
+        (ANULADA, 'Anulada'),
+        (NO_ASISTE, 'No asiste')
+    ]
+    estado = models.CharField(
+        max_length=30, choices=ESTADO_CHOICES, default=RESERVADO)
+    observacion = models.TextField(blank=True, null=True)
+
+    def __str__(self) -> str:
+        return self.institucion

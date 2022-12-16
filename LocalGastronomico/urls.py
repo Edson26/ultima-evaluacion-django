@@ -16,10 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from seminario import views
+from Api_Rest import views as viewsApi
+from Funcion_Based_Views import views as viewsFuncion
+from Class_Based_Views import views as viewsClass
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('listado/', views.listado, name="listado"),
+    path('api/inscritos/', viewsApi.verinscritos, name="api_rest"),
+    path('api/funcion/', viewsFuncion.listar_institucion, name="api_funcion"),
+    path('api/funcion/detalle/<int:pk>', viewsFuncion.detalle_institucion, name="api_funcion_detalle"),
+    path('api/class', viewsClass.ListaInscritos.as_view(), name="api_class"),
+    path('api/class/detalle/<int:pk>', viewsClass.DetalleInscritos.as_view(), name="api_class_detalle"),
     path('crearInscripcion/', views.crearInscripcion, name="crearInscripcion"),
     path('crearInstitucion/', views.crearInstitucion, name="crearInstitucion"),
     path('listaInscritos/', views.listadoInscrito, name="listaInscripcion"),
