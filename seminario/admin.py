@@ -4,7 +4,7 @@ from .models import Inscritos, Institucion
 
 
 class InscritosAdmin(admin.ModelAdmin):
-    list_display = ['nombre', 'telefono', 'fecha', 'hora', 'institucion']
+    list_display = ['nombre', 'telefono', 'fecha', 'hora', 'institucion','estado','observacion']
 
 
 admin.site.register(Inscritos, InscritosAdmin)

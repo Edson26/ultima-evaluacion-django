@@ -5,5 +5,5 @@ from seminario.models import Inscritos
 
 def verinscritos(request):
     inscritos = Inscritos.objects.all()
-    data = {'inscrito': list(inscritos.values('nombre','telefono','fecha','hora','institucion'))}
+    data = {'inscrito': list(inscritos.values('nombre','telefono','fecha','hora','institucion','estado','observacion'))}
     return JsonResponse(data)
